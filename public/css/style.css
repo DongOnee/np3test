@@ -1,15 +1,87 @@
 body{
 	width: 85%;
-	height: 90%;
+	height: 100%;
 	margin: 0 auto;
 	background-color:#F0F0F0;
-	font-family: 'Raleway','Source Sans Pro', 'Arial';
+	font-family: 'Raleway', 'Source Sans Pro', 'Arial';
 	color: black;
 	padding: 2em;
 }
 
+header {
+	height: 10%;
+}
+
 main {
-	height: 85%;
+	height: 80%;
+}
+
+.player {
+	background-color: white;
+	height: 100%;
+}
+
+.player > div {
+	width: 96%;
+	padding: 5% 0;
+	background-color: yellow;
+	margin : 2%;
+	text-align: center;
+}
+
+.album {
+	height: 60%;
+}
+
+.album > img {
+	height: 100%;
+	width: auto;
+}
+
+.controller {
+	height: 34%;
+}
+
+.controller > div{
+	position: relative;
+	height: 100%;
+	width: 25%;
+	margin: 0 4%;
+	padding: 0;
+}
+
+.controller > div > * {
+	height: 100%;
+	margin: 0 0;
+	border-radius: 100%;
+}
+
+.controller > div > img{
+	width: auto;
+}
+
+.controller > div button {
+	width: 100%;
+	position: absolute;
+	top: 00%;
+	left: 00%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.rightside {
+	background-color: green;
+	height: 100%;
+}
+
+.rightside button {
+	margin: 1em 0;
+	background-color: white;
+}
+
+footer {
+	height: 10%;
+	padding: 1em;
 }
 
 input {
@@ -21,25 +93,11 @@ input {
 button {
 	margin: 2em 0;
 	padding: 1em 4em;
-	display:block;
+	display: block;
 }
 
 #instructor {
 	padding:1em;
 	background-color:#fff;
 	margin: 1em 0;
-}
-
-.playlist {
-	background-color: blue;
-	height: 100%;
-}
-
-.musics {
-	margin: 0;
-}
-
-.rightside {
-	background-color: green;
-	height: 100%;
 }

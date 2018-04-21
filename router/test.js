@@ -1,18 +1,6 @@
 module.exports = function(app, fs) 
 {
 	app.get('/', function(req, res) {
-		function getFiles (dir, files_){
-			files_ = files_ || [];
-			var files = fs.readdirSync(dir);
-			for (var i in files){
-				var name = dir + '/' + files[i];
-				if (!fs.statSync(name).isDirectory()){
-					files_.push(files[i]);
-				}
-			}
-			return files_;
-		}
-
 		var lists = getFiles(__dirname+'/../musics');
 
 		var musics = [
@@ -37,4 +25,16 @@ module.exports = function(app, fs)
 			
 		})
 	})
+
+	function getFiles (dir, files_){
+		files_ = files_ || [];
+		var files = fs.readdirSync(dir);
+		for (var i in files){
+			var name = dir + '/' + files[i];
+			if (!fs.statSync(name).isDirectory()){
+				files_.push(files[i]);
+			}
+		}
+		return files_;
+	}
 }

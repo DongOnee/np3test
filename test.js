@@ -3,11 +3,11 @@ var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require("fs");
+var Player = require('player');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
-
 
 var server = app.listen(8081, function(){
 	console.log("Express server has started on port 8081")
@@ -29,4 +29,4 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var router = require('./router/test')(app, fs);
+var router = require('./router/test')(app, fs, Player);

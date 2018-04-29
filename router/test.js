@@ -1,4 +1,4 @@
-module.exports = function(app, fs) 
+module.exports = function(app, fs, Player) 
 {
 	app.get('/', function(req, res) {
 		var lists = getFiles(__dirname+'/../musics');
@@ -10,7 +10,8 @@ module.exports = function(app, fs)
 		];
 		res.render('pages/test_index', {
 			musics: musics,
-			lists: lists
+			lists: lists,
+			Player: Player
 		});
 	});
 

@@ -16,8 +16,9 @@ module.exports = function(app, fs, Player)
 	});
 
 	app.get('/buy', function(req, res) {
+		var lists = getFiles(__dirname+'/../musics');
 		res.render('pages/test_buy', {
-			
+			lists: lists
 		})
 	})
 

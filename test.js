@@ -29,4 +29,4 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var router = require('./router/test')(app, fs, Player);
+var router = require('./router/test')(app, fs);

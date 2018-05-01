@@ -1,21 +1,20 @@
-module.exports = function(app, fs) 
+module.exports = function(app, fs, player) 
 {
+	console.log(player.list);
 	app.get('/', function(req, res) {
-		var lists = getFiles(__dirname+'/../musics');
-
-		var musics = [
-			{ artist: 'Bloody Mary', musicname: '3' },
-			{ artist: 'Martini', musicname: '5' },
-			{ artist: 'Scotch', musicname: '10' }
-		];
 		res.render('pages/test_index', {
-			musics: musics,
-			lists: lists
+			player: player
 		});
 	});
 
+	app.post('/', function(req, res, next) {
+		console.log('POST 방식으로 서버 호출됨');
+		var msg = req.body.msg;
+		msg = '[에코]' + msg;
+		res.send({result:true, msg:msg});
+	});
+
 	app.get('/buy', function(req, res) {
-		var lists = getFiles(__dirname+'/../musics');
 		res.render('pages/test_buy', {
 			lists: lists
 		})
@@ -27,7 +26,7 @@ module.exports = function(app, fs)
 		})
 	})
 
-	function getFiles (dir, files_){
+	function getFiles (dir, files_) {
 		files_ = files_ || [];
 		var files = fs.readdirSync(dir);
 		for (var i in files){

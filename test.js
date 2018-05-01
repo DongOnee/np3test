@@ -29,4 +29,33 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var router = require('./router/test')(app, fs);
+var player = new Player();
+
+var files = fs.readdirSync("musics");
+for (var i in files){
+	var name = "musics/" + files[i];
+	if (!fs.statSync(name).isDirectory()){
+		player.add(name);
+	}
+}
+var test = 4;
+
+// event: on error
+player.on('error', function(err){
+	console.log(err);
+});
+
+// event: on playing
+player.on('playing',function(item){
+	console.log('im playing... src : ' + item.src);
+});
+
+// event: on playend
+player.on('playend',function(item){
+	// return a playend item
+	console.log('src: ' + item.src + ' play done, switching to next one ...');
+});
+// player.play(function(err, player){
+// 	console.log('playend!');
+// });
+var router = require('./router/test')(app, fs, player);

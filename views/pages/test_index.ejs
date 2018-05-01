@@ -6,12 +6,16 @@
 	<% include ../partials/head %>
 </head>
 
-
 <body>
+	<script type="text/javascript" src="/js/pre.js"></script>
+	<script type="text/javascript" src="/js/post.js"></script>
+
 	<header>
 		<% include ../partials/header %>
 	</header>
 
+	<% player.play() %>
+	
 	<main>
 		<% include ../partials/test_player %>
 		<div class="col-md-1" style="height: 100%;"></div>

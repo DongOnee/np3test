@@ -1,0 +1,13 @@
+<div class="buy_container">
+	<div class="buy_music_container">
+		<% lists.forEach(function(list) { %>
+		<button type="button" class="buy_music"><%= list %></button>
+		<% }); %>
+	</div>
+</div>
+
+<script>
+var x = document.querySelectorAll("button");
+for(var i = 0; i < x.length; i++) {
+    x[i].setAttribute("name",i+"");
+}</script>

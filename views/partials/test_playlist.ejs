@@ -1,15 +1,38 @@
-
 <div class="col-md-3 rightside">
 	<div id="btn-group" class="btn-group-vertical" style="width: 100%; height: 100%; overflow:scroll;">
 		<% player.list.forEach(function(list) { %>
-			<button type="button" class="btn btn-xs btn-block btns" onclick="clicksibal(this.innerText)"><%= list %></button>
+			<button type="button" class="btn btn-xs btn-block"><%= list %></button>
 		<% }); %>
 	</div>
 </div>
 
 <script>
-	function clicksibal(tt) {
-		console.log(tt);
-		player
-	}
+function sendAjax(url, data){
+	
+	// 입력값을 변수에 담고 문자열 형태로 변환
+	var msg = {'email' : data};
+	msg = JSON.stringify(msg);
+
+	// content-type을 설정하고 데이터 송신
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', url);
+	xhr.setRequestHeader('Content-type', "application/json");
+	xhr.send(msg);
+	
+	// 데이터 수신이 완료되면 표시
+	xhr.addEventListener('load', function(){
+		console.log(xhr.responseText);
+	});
+}
+var x = document.querySelectorAll("button");
+for(var i = 0; i < x.length; i++) {
+	x[i].setAttribute("id",i+"");
+	var tmp =x[i].innerText;
+	x[i].addEventListener('click', function(){
+		// 입력값 위치를 찾아 변수에 담고
+		var inputdata = tmp;
+		// sendAjax 함수를 만들고 URL과 data를 전달
+		sendAjax('http://127.0.0.1:8081/change', inputdata)
+	});
+}
 </script>

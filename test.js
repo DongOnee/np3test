@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var fs = require("fs");
+var fs = require('fs');
 var Player = require('player');
 
 app.set('views', __dirname + '/views');
@@ -38,11 +38,10 @@ for (var i in files){
 		player.add(name);
 	}
 }
-var test = 4;
 
 // event: on error
 player.on('error', function(err){
-	console.log(err);
+	console.log("err" + err);
 });
 
 // event: on playing
@@ -55,7 +54,5 @@ player.on('playend',function(item){
 	// return a playend item
 	console.log('src: ' + item.src + ' play done, switching to next one ...');
 });
-// player.play(function(err, player){
-// 	console.log('playend!');
-// });
+
 var router = require('./router/test')(app, fs, player);

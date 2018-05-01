@@ -1,20 +1,24 @@
 module.exports = function(app, fs, player) 
 {
 	console.log(player.list);
+	var files_ = [];
+	var lists = getFiles(__dirname + '/../musics/', files_);
 	app.get('/', function(req, res) {
 		res.render('pages/test_index', {
-			player: player
+			player: player,
+			lists: lists
 		});
 	});
 
-	app.post('/', function(req, res, next) {
+	app.post('/change', function(req, res) {
 		console.log('POST 방식으로 서버 호출됨');
-		var msg = req.body.msg;
-		msg = '[에코]' + msg;
-		res.send({result:true, msg:msg});
+		var msg = req.body.email;
+		console.log(msg);
+		player.play();
 	});
 
 	app.get('/buy', function(req, res) {
+		console.log(lists);
 		res.render('pages/test_buy', {
 			lists: lists
 		})

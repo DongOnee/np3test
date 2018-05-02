@@ -35,25 +35,18 @@ var player = new Player();
 var files = fs.readdirSync("musics");
 for (var i in files){
 	var name = "musics/" + files[i];
-	var data = nodeID3.read(files[1]);
-	console.log(files[1]);
+	// var data = nodeID3.read(files[1]);
+	// console.log(files[1]);
 	
-	console.log("data : " + data);
+	// console.log("data : " + data);
 	
 // fs.writeFile("../img/"+name+'.jpg', data.image.imageBuffer, 'binary', function(err) {
 //   //...
 // });
-	if (!fs.statSync(name).isDirectory()){
-		player.add(name);
-	}
+	// if (!fs.statSync(name).isDirectory()){
+	// 	player.add(name);
+	// }
 }
-
-// event: on error
-player.on('error', function(err){
-	console.log("err!! " + err);
-	player.stop();
-});
-
 // event: on playing
 player.on('playing',function(item){
 	console.log('im playing... src : ' + item.src);
@@ -63,7 +56,12 @@ player.on('playing',function(item){
 player.on('playend',function(item){
 	// return a playend item
 	console.log('src: ' + item.src + ' play done, switching to next one ...');
-	player.stop();
+	player.pause();
+});
+
+// event: on error
+player.on('error', function(err){
+	console.log("err!! " + err);
 });
 
 var router = require('./router/test')(app, fs, player);

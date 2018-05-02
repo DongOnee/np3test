@@ -18,9 +18,10 @@ module.exports = function(app, fs, player)
 
 	app.post('/change', function(req, res) {
 		console.log('POST 방식으로 서버 호출됨');
-		var msg = req.body.email;
-		console.log(msg);
+		var msg = req.body.musicname;
+		console.log("/change..."+msg);
 		player.add(__dirname + "/../musics/"+msg);
+		console.log(player.list);
 		player.play(function(err, player){
 			console.log('playend!');
 		});

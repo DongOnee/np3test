@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require('fs');
 var Player = require('player');
+var nodeID3 = require('node-id3');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -34,6 +35,14 @@ var player = new Player();
 var files = fs.readdirSync("musics");
 for (var i in files){
 	var name = "musics/" + files[i];
+	var data = nodeID3.read(files[1]);
+	console.log(files[1]);
+	
+	console.log("data : " + data);
+	
+// fs.writeFile("../img/"+name+'.jpg', data.image.imageBuffer, 'binary', function(err) {
+//   //...
+// });
 	if (!fs.statSync(name).isDirectory()){
 		player.add(name);
 	}

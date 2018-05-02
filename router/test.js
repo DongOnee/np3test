@@ -3,6 +3,12 @@ module.exports = function(app, fs, player)
 	console.log(player.list);
 	var files_ = [];
 	var lists = getFiles(__dirname + '/../musics/', files_);
+	// var beom = nodeID3.read(lists[0]);
+	// var fs = require('fs');
+
+// fs.writeFile('result.jpg', data.image.imageBuffer, 'binary', function(err) {
+//   //...
+// });
 	app.get('/', function(req, res) {
 		res.render('pages/test_index', {
 			player: player,
@@ -24,6 +30,7 @@ module.exports = function(app, fs, player)
 		console.log(lists);
 		res.render('pages/test_buy', {
 			lists: lists
+			// data: beom
 		})
 	})
 

@@ -31,17 +31,18 @@ app.use(session({
 
 var player = new Player();
 
-var files = fs.readdirSync("musics");
-for (var i in files){
-	var name = "musics/" + files[i];
-	if (!fs.statSync(name).isDirectory()){
-		player.add(name);
-	}
-}
+// var files = fs.readdirSync("musics");
+// for (var i in files){
+// 	var name = "musics/" + files[i];
+// 	if (!fs.statSync(name).isDirectory()){
+// 		player.add(name);
+// 	}
+// }
 
 // event: on error
 player.on('error', function(err){
-	console.log("err" + err);
+	console.log("err!! " + err);
+	player.stop();
 });
 
 // event: on playing
@@ -53,6 +54,7 @@ player.on('playing',function(item){
 player.on('playend',function(item){
 	// return a playend item
 	console.log('src: ' + item.src + ' play done, switching to next one ...');
+	player.stop();
 });
 
 var router = require('./router/test')(app, fs, player);

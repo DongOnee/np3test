@@ -14,7 +14,10 @@ module.exports = function(app, fs, player)
 		console.log('POST 방식으로 서버 호출됨');
 		var msg = req.body.email;
 		console.log(msg);
-		player.play();
+		player.add(__dirname + "/../musics/"+msg);
+		player.play(function(err, player){
+			console.log('playend!');
+		});
 	});
 
 	app.get('/buy', function(req, res) {

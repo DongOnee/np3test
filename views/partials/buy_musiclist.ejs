@@ -1,11 +1,11 @@
 <div class="buy_container">
 	<div class="buy_music_container">
-		<% for(var i=0; i < lists.length; i++) { %>
-        <img src="../../img/<%= img_lists[i] %>" alt="이미지의 묘사 내용" />
-		<button type="button" class="buy_music"><%= lists[i] %></button>
+		<% for(var i=0; i < lists.length-1; i++) { %>
+        <div class="music_data">
+        <img class="music_img" src="music_img/<%= img_lists[i] %>" alt="이미지의 묘사 내용" />
+		<button type="button" class="buy_music"><%= lists[i+1] %></button>
+        </div>
 		<% }; %>
-        <%= img_lists %>
-        
 	</div>
 </div>
 

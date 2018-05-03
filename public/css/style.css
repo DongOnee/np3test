@@ -106,4 +106,17 @@ button {
 	display: grid;
 	grid-template-columns: auto auto auto;
 	grid-gap: 20px;
+	text-align: center;
+}
+
+
+
+.music_img {
+	object-fit: cover;
+	width: 100px;
+	height: 100px;
+}
+
+.music_data button {
+	display: inline;
 }

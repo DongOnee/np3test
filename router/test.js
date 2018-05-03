@@ -4,7 +4,7 @@ module.exports = function(app, fs, player)
 	var files_ = [];
 	var img_files_ = [];
 	var lists = getFiles(__dirname + '/../musics/', files_);
-	var img_lists = getFiles(__dirname + '/../img/', img_files_);
+	var img_lists = getFiles(__dirname + '/../public/music_img/', img_files_);
 	// var beom = nodeID3.read(lists[0]);
 	// var fs = require('fs');
 
@@ -20,9 +20,13 @@ module.exports = function(app, fs, player)
 
 	app.post('/change', function(req, res) {
 		console.log('POST 방식으로 서버 호출됨');
-		var msg = req.body.email;
-		console.log(msg);
-		player.play();
+		var msg = req.body.musicname;
+		console.log("/change..."+msg);
+		player.add(__dirname + "/../musics/"+msg);
+		console.log(player.list);
+		player.play(function(err, player){
+			console.log('playend!');
+		});
 	});
 
 	app.get('/buy', function(req, res) {

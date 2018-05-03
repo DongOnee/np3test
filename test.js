@@ -33,16 +33,28 @@ app.use(session({
 var player = new Player();
 
 var files = fs.readdirSync("musics");
+// console.log("files : " + files);
+
+// var name = "musics/" + files[2];
+// 	var data = nodeID3.read(name);
+
+// 	console.log(data);
 for (var i in files){
 	var name = "musics/" + files[i];
-	var data = nodeID3.read(files[1]);
-	console.log(files[1]);
+	// var data = nodeID3.read(name);
 	
-	console.log("data : " + data);
-	
-// fs.writeFile("../img/"+name+'.jpg', data.image.imageBuffer, 'binary', function(err) {
-//   //...
-// });
+	// console.log("data : " + data);
+	if(name.includes("mp3")) {
+		console.log(name + " img create!");
+		
+		var data = nodeID3.read(name);
+		var temp = name.split("/");
+		var img_name = temp[1].split(".");	
+
+		fs.writeFile("img/"+img_name[0]+'.jpg', data.image.imageBuffer, 'binary', function(err) {
+			//...
+		  });
+	}
 	if (!fs.statSync(name).isDirectory()){
 		player.add(name);
 	}

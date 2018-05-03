@@ -1,12 +1,14 @@
 <div class="buy_container">
 	<div class="buy_music_container">
-		<% lists.forEach(function(list) { %>
-		<button type="button" class="buy_music"><%= list %></button>
-		<% }); %>
-        <%= data %>
+		<% for(var i=0; i < lists.length; i++) { %>
+        <img src="../../img/<%= img_lists[i] %>" alt="이미지의 묘사 내용" />
+		<button type="button" class="buy_music"><%= lists[i] %></button>
+		<% }; %>
+        <%= img_lists %>
         
 	</div>
 </div>
+
 
 <script>
 var x = document.querySelectorAll("button");

@@ -2,7 +2,9 @@ module.exports = function(app, fs, player)
 {
 	console.log(player.list);
 	var files_ = [];
+	var img_files_ = [];
 	var lists = getFiles(__dirname + '/../musics/', files_);
+	var img_lists = getFiles(__dirname + '/../img/', img_files_);
 	// var beom = nodeID3.read(lists[0]);
 	// var fs = require('fs');
 
@@ -26,7 +28,8 @@ module.exports = function(app, fs, player)
 	app.get('/buy', function(req, res) {
 		console.log(lists);
 		res.render('pages/test_buy', {
-			lists: lists
+			lists: lists,
+			img_lists: img_lists
 			// data: beom
 		})
 	})

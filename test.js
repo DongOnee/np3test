@@ -45,37 +45,34 @@ for (var i in files){
 	
 	// console.log("data : " + data);
 	if(name.includes("mp3")) {
-		console.log(name + " img create!");
+		// console.log(name + " img create!");
 		
 		var data = nodeID3.read(name);
 		var temp = name.split("/");
 		var img_name = temp[1].split(".");
 		var img_name_ = img_name[0].split(" ");
 
-
 		fs.writeFile("./public/music_img/"+img_name_[0]+ img_name_[1] +'.jpg', data.image.imageBuffer, 'binary', function(err) {
 			//...
-		  });
-	}
-	if (!fs.statSync(name).isDirectory()){
+		});
 		player.add(name);
 	}
 }
 // event: on playing
 player.on('playing',function(item){
-	console.log('im playing... src : ' + item.src);
+	console.log('I\'m playing... name : ' + item._name);
 });
 
 // event: on playend
 player.on('playend',function(item){
 	// return a playend item
 	console.log('src: ' + item.src + ' play done, switching to next one ...');
-	player.pause();
 });
 
 // event: on error
 player.on('error', function(err){
 	console.log("err!! " + err);
 });
+player.enable('stream')
 
 var router = require('./router/test')(app, fs, player);

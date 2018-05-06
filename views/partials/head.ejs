@@ -5,3 +5,20 @@
 <!-- CSS (load bootstrap from a CDN) -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+
+<!-- firebase 추가 -->
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDZ2cFjtgwzcrDO9kvCezSk0yLgxp6Tc1Y",
+    authDomain: "team-np.firebaseapp.com",
+    databaseURL: "https://team-np.firebaseio.com",
+    projectId: "team-np",
+    storageBucket: "team-np.appspot.com",
+    messagingSenderId: "456454921904"
+  };
+  firebase.initializeApp(config);
+</script>

@@ -13,6 +13,11 @@
 <script>
 var x = document.querySelectorAll("button");
 for(var i = 0; i < x.length; i++) {
-    x[i].setAttribute("name",i+"");
+    x[i].setAttribute("id",i+"");
+}
+for(var i = 0; i < x.length; i++) {
+   x[i].addEventListener('click', function(){
+		console.log("click" + this.id);
+	});
 }
 </script>

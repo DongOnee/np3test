@@ -62,6 +62,12 @@ module.exports = function(app, fs, player)
 		})
 	})
 
+	app.get('/login', function(req, res) {
+		res.render('pages/login', {
+			
+		})
+	})
+
 	function getFiles (dir, files_) {
 		files_ = files_ || [];
 		var files = fs.readdirSync(dir);

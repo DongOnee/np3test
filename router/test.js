@@ -1,3 +1,5 @@
+var Player = require('player');
+
 module.exports = function(app, fs, player) 
 {
 	var files_ = []
@@ -11,6 +13,7 @@ module.exports = function(app, fs, player)
 //   //...
 // });
 	app.get('/', function(req, res) {
+		var sess = req.session
 		res.render('pages/test_index', {
 			lists: lists
 		});
@@ -48,7 +51,6 @@ module.exports = function(app, fs, player)
 	});
 
 	app.get('/buy', function(req, res) {
-		console.log(lists);
 		res.render('pages/test_buy', {
 			lists: lists,
 			img_lists: img_lists

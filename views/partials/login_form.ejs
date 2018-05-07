@@ -33,9 +33,17 @@ login_btn.addEventListener('click', function(){
         }else {
             error_msg.innerHTML = errorMessage;
         }
-
         // location.replace("/");
     });
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+
+            location.replace("/");
+  } else {
+    // No user is signed in.
+  }
+});
 });
    
 </script>

@@ -5,7 +5,6 @@ var session = require('express-session');
 var fs = require('fs');
 var Player = require('player');
 var nodeID3 = require('node-id3');
-var mediaelements = require("mediaelement");
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

@@ -1,7 +1,9 @@
 <div class="col-md-8 player">
 	<div class="row album">
-		<audio id="player2" controls>
-			<source src="/test.mp3" type="audio/mp3">	
+		<audio id="player2" controls autoplay loop>
+			<% lists.forEach(function(list) { %>
+				<source src='../../musics/<%= list %>' type="audio/mp3">	
+			<% }); %>
 		</audio>
 		<img src="/images/seoul.png" alt="앨범이미지"> 
 	</div>
@@ -25,12 +27,14 @@
 	// You can use either a string for the player ID (i.e., `player`), 
 	// or `document.querySelector()` for any selector
 	var player = new MediaElementPlayer('player2', {
-		pluginPath: "/path/to/shims/",
+		pluginPath: 'https://cdnjs.com/libraries/mediaelement/',
 	// When using `MediaElementPlayer`, an `instance` argument
 	// is available in the `success` callback
 		success: function(mediaElement, originalNode, instance) {
 			// do things
-			console.log("test")
+			this.on("onended", function(err) {
+				console.log("test")
+			})
 		}
 	});
 </script>

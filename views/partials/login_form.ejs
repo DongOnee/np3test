@@ -1,41 +1,40 @@
 <div>
- <input type="text" name="id">
- <input type="text" name="pw">
+ <input type="text" name="id" placeholder="email">
+ <input type="password" name="pw" placeholder="password">
  <button id="login_btn">로그인</button>
+ <p id="error_msg"></p>
 </div>
 
 
 <script>
 var login_btn = document.getElementById("login_btn");
 var input = document.querySelectorAll("input");
-console.log(input[0].value)
+var error_msg = document.getElementById("error_msg");
+// console.log(input[0].value)
 login_btn.addEventListener('click', function(){
 
-var email = input[0].value;
-var password = input[1].value;
+    var email = input[0].value;
+    var password = input[1].value;
 
-console.log(email)
+    console.log("email : "+email);
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // ...
+    console.log("err_msg : " + errorMessage)
+    console.log("err_code : " + errorCode)
+        if(errorCode.includes("user-not-found")) { //회원가입
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // console.log(errorMessage)
+            // console.log(errorCode)
+            // location.replace("/");
+            });
+        }else {
+            error_msg.innerHTML = errorMessage;
+        }
 
-console.log(errorMessage)
-
-console.log(errorCode)
-if(errorCode.includes("user-not-found")) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-
-console.log(errorMessage)
-
-console.log(errorCode)
-});
-}
+        // location.replace("/");
     });
 });
    
